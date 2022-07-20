@@ -21,19 +21,25 @@ let id = null
 
 // We loop trough our array to get food list 
 for (const food of foodList) {
+
+
+    // We add id to our item
     foodlist.innerHTML += `
             <li class="fooditem" id="id${food.id}">${food.name}
             <h4 class="foodprice">${food.price} $</h4>
-            </li>
-            
+            </li>      
         `
     let fooditem = document.querySelectorAll(".fooditem");
     for (const item of fooditem) {
         item.addEventListener("click", () => {
+            // We slice this id just to remove this text "id", because array index can't be a string
             id = item.id.slice(2)
-            foodimagecontainer.style = "display: flex"
+
+            // Display image container
+            foodimagecontainer.style = "display: flex";
+
+            // Display food image
             foodimage.src = foodList[id].image;
-            foodprice.textContent = foodList[id].price;
         })
     }
 }
